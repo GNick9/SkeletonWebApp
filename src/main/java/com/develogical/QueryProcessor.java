@@ -22,7 +22,10 @@ public class QueryProcessor {
       for (String n : numbers) {
         int i = Integer.parseInt(n);
         if (Math.sqrt((double)i) == (int) Math.sqrt((double)i)) {
-          return String.valueOf(i);
+          if (Math.cbrt((double)i) == (int) Math.cbrt((double)i)) {
+        
+            return String.valueOf(i);
+          }
         }
       }
       return "";
