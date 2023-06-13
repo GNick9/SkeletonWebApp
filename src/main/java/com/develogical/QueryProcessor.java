@@ -68,7 +68,7 @@ public class QueryProcessor {
     if (powerMatcher.matches()) {
       int i1 = Integer.valueOf(powerMatcher.group(1));
       int i2 = Integer.valueOf(powerMatcher.group(2));
-      return String.valueOf((int)Math.pow(i1, i2));
+      return String.valueOf((long)Math.pow(i1, i2));
     
     }
 
