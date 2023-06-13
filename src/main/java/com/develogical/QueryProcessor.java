@@ -11,10 +11,37 @@ public class QueryProcessor {
 
   Pattern mult = Pattern.compile("What is (-?\\d+) multiplied by (-?\\d+)\\?");
 
+  public boolean isPrime(int num) {
+
+  
+    boolean flag = false;
+    for (int i = 2; i <= num / 2; ++i) {
+      // condition for nonprime number
+      if (num % i == 0) {
+        flag = true;
+        break;
+      }
+    }
+
+    return !flag;
+  }
+
 
   public String process(String query) {
 
     System.out.println("Received query:" + query);
+
+    if (query.contains("Which of the following numbers are primes:")) {
+      String q2 = query.replace("Which of the following numbers are primes: ", "").replace("?", "");
+      String[] numbers = q2.split(", ");
+      for (String n : numbers) {
+        int i = Integer.parseInt(n);
+        if (isPrime(i)) {
+          return String.valueOf(i);
+        }
+      }
+
+    }
 
     if (query.contains("Which of the following numbers is both a square and a cube: ")) {
       String q2 = query.replace("Which of the following numbers is both a square and a cube: ", "").replace("?", "");

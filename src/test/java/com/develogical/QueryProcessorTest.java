@@ -34,6 +34,20 @@ public class QueryProcessorTest {
     assertThat(queryProcessor.process("What is 12 plus -5?"), IsEqual.equalTo("7"));
     
   }
+   @Test 
+  public void doMinus() {
+    assertThat(queryProcessor.process("What is 1 plus 1?"), IsEqual.equalTo("2"));
+    assertThat(queryProcessor.process("What is 12 plus 13?"), IsEqual.equalTo("25"));
+    assertThat(queryProcessor.process("What is 12 plus -5?"), IsEqual.equalTo("7"));
+    
+  }
+
+  @Test
+  public void doPrimes() {
+    String q = "Which of the following numbers are primes: 4, 8, 13, 22";
+    assertThat(queryProcessor.process(q), IsEqual.equalTo("13"));
+
+  }
 
   @Test
   public void doMax() {
