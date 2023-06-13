@@ -51,4 +51,11 @@ public class QueryProcessorTest {
     assertThat(queryProcessor.process("What is -1 multiplied by -5?"), IsEqual.equalTo("5"));
     
   }
+
+  @Test
+  public void doSC() {
+    String q = "Which of the following numbers is both a square and a cube: 921, 3844, 4225, 4843, 3375, 2472, 1?";
+
+    assertThat(queryProcessor.process(q), IsEqual.equalTo("3844"));
+  }
 }

@@ -16,6 +16,18 @@ public class QueryProcessor {
 
     System.out.println("Received query:" + query);
 
+    if (query.contains("Which of the following numbers is both a square and a cube: ")) {
+      String q2 = query.replace("Which of the following numbers is both a square and a cube: ", "").replace("?", "");
+      String[] numbers = q2.split(", ");
+      for (String n : numbers) {
+        int i = Integer.parseInt(n);
+        if (Math.sqrt((double)i) == (int) Math.sqrt((double)i)) {
+          return String.valueOf(i);
+        }
+      }
+      return "";
+    }
+
     Matcher multMatcher = mult.matcher(query);
     if (multMatcher.matches()) {
       int i1 = Integer.valueOf(multMatcher.group(1));
