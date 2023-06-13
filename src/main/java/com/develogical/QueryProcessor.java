@@ -1,5 +1,7 @@
 package com.develogical;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,13 +42,14 @@ public class QueryProcessor {
     if (query.contains("Which of the following numbers are primes:")) {
       String q2 = query.replace("Which of the following numbers are primes: ", "").replace("?", "");
       String[] numbers = q2.split(", ");
+      List<String> primes = new ArrayList<>();
       for (String n : numbers) {
         int i = Integer.parseInt(n);
         if (isPrime(i)) {
-          return String.valueOf(i);
+          primes.add(String.valueOf(i));
         }
       }
-
+      return String.join(", ", primes);
     }
 
     if (query.contains("Which of the following numbers is both a square and a cube: ")) {

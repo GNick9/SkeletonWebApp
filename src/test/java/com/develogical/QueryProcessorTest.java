@@ -53,7 +53,7 @@ public class QueryProcessorTest {
     String q = "Which of the following numbers are primes: 4, 8, 13, 22";
     assertThat(queryProcessor.process(q), IsEqual.equalTo("13"));
     q = "Which of the following numbers are primes: 5, 96, 50, 4, 61?";
-    assertThat(queryProcessor.process(q), IsEqual.equalTo("5"));
+    assertThat(queryProcessor.process(q), IsEqual.equalTo("5, 61"));
     
 
   }
