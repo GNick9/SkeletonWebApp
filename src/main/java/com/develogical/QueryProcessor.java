@@ -7,6 +7,8 @@ public class QueryProcessor {
 
   Pattern plus = Pattern.compile("What is (\\d+) plus (\\d+)\\?");
 
+  Pattern max = Pattern.compile("Which of the following numbers is the largest: (\\d+), (\\d+), (\\d+)\\?");
+
   public String process(String query) {
 
     System.out.println("Received query:" + query);
@@ -16,6 +18,17 @@ public class QueryProcessor {
       int i1 = Integer.valueOf(plusMatcher.group(1));
       int i2 = Integer.valueOf(plusMatcher.group(2));
       return String.valueOf(i1+i2);
+    }
+
+    Matcher maxMatcher = max.matcher(query);
+    if (maxMatcher.matches()) {
+      int i1 = Integer.valueOf(maxMatcher.group(1));
+      int i2 = Integer.valueOf(maxMatcher.group(2));
+      int i3 = Integer.valueOf(maxMatcher.group(3));
+
+      int m = Math.max( Math.max(i1, i2), i3);
+      return String.valueOf(m);
+      
     }
 
     if (query.toLowerCase().contains("shakespeare")) {
