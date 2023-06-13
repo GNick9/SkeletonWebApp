@@ -67,6 +67,12 @@ public class QueryProcessorTest {
       
   }
 
+     @Test 
+  public void doPow() {
+    assertThat(queryProcessor.process("What is 2 to the power of 3?"), IsEqual.equalTo("8"));
+    
+  }
+
     @Test 
   public void doMult() {
     assertThat(queryProcessor.process("What is 1 multiplied by 1?"), IsEqual.equalTo("1"));
