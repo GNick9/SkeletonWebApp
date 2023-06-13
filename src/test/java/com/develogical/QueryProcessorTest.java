@@ -26,6 +26,12 @@ public class QueryProcessorTest {
     assertThat(queryProcessor.process("What is your name?"), containsString("Nick"));
    
   }
+  @Test 
+  public void doMinus() {
+    assertThat(queryProcessor.process("What is 3 minus 1?"), IsEqual.equalTo("2"));
+    assertThat(queryProcessor.process("What is 14 minus 6?"), IsEqual.equalTo("8"));
+    
+  }
 
   @Test 
   public void doSums() {
@@ -35,7 +41,7 @@ public class QueryProcessorTest {
     
   }
    @Test 
-  public void doMinus() {
+  public void doPlus() {
     assertThat(queryProcessor.process("What is 1 plus 1?"), IsEqual.equalTo("2"));
     assertThat(queryProcessor.process("What is 12 plus 13?"), IsEqual.equalTo("25"));
     assertThat(queryProcessor.process("What is 12 plus -5?"), IsEqual.equalTo("7"));
@@ -46,6 +52,9 @@ public class QueryProcessorTest {
   public void doPrimes() {
     String q = "Which of the following numbers are primes: 4, 8, 13, 22";
     assertThat(queryProcessor.process(q), IsEqual.equalTo("13"));
+    q = "Which of the following numbers are primes: 5, 96, 50, 4, 61?";
+    assertThat(queryProcessor.process(q), IsEqual.equalTo("5"));
+    
 
   }
 

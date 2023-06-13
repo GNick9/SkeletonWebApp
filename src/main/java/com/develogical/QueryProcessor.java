@@ -13,6 +13,8 @@ public class QueryProcessor {
 
   Pattern mult = Pattern.compile("What is (-?\\d+) multiplied by (-?\\d+)\\?");
 
+  Pattern power = Pattern.compile("What is (-?\\d+) to the power of (-?\\d+)\\?");
+
   public boolean isPrime(int num) {
 
   
@@ -58,6 +60,14 @@ public class QueryProcessor {
         }
       }
       return "";
+    }
+
+    Matcher powerMatcher = power.matcher(query);
+    if (powerMatcher.matches()) {
+      int i1 = Integer.valueOf(powerMatcher.group(1));
+      int i2 = Integer.valueOf(powerMatcher.group(2));
+      return String.valueOf(Math.pow(i1, i2));
+    
     }
 
     Matcher multMatcher = mult.matcher(query);
