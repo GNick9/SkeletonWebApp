@@ -31,6 +31,7 @@ public class QueryProcessorTest {
   public void doSums() {
     assertThat(queryProcessor.process("What is 1 plus 1?"), IsEqual.equalTo("2"));
     assertThat(queryProcessor.process("What is 12 plus 13?"), IsEqual.equalTo("25"));
+    assertThat(queryProcessor.process("What is 12 plus -5?"), IsEqual.equalTo("7"));
     
   }
 
@@ -38,7 +39,16 @@ public class QueryProcessorTest {
   public void doMax() {
     assertThat(queryProcessor.process("Which of the following numbers is the largest: 1, 2, 3?"), IsEqual.equalTo("3"));
     assertThat(queryProcessor.process("Which of the following numbers is the largest: 10, 20, 12?"), IsEqual.equalTo("20"));
+    assertThat(queryProcessor.process("Which of the following numbers is the largest: -10, -20, -12?"), IsEqual.equalTo("-10"));
     
       
+  }
+
+    @Test 
+  public void doMult() {
+    assertThat(queryProcessor.process("What is 1 multiplied by 1?"), IsEqual.equalTo("1"));
+    assertThat(queryProcessor.process("What is 2 multiplied by 13?"), IsEqual.equalTo("26"));
+    assertThat(queryProcessor.process("What is -1 multiplied by -5?"), IsEqual.equalTo("5"));
+    
   }
 }

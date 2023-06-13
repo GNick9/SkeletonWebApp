@@ -5,13 +5,24 @@ import java.util.regex.Pattern;
 
 public class QueryProcessor {
 
-  Pattern plus = Pattern.compile("What is (\\d+) plus (\\d+)\\?");
+  Pattern plus = Pattern.compile("What is (-?\\d+) plus (-?\\d+)\\?");
 
-  Pattern max = Pattern.compile("Which of the following numbers is the largest: (\\d+), (\\d+), (\\d+)\\?");
+  Pattern max = Pattern.compile("Which of the following numbers is the largest: (-?\\d+), (-?\\d+), (-?\\d+)\\?");
+
+  Pattern mult = Pattern.compile("What is (-?\\d+) multiplied by (-?\\d+)\\?");
+
 
   public String process(String query) {
 
     System.out.println("Received query:" + query);
+
+    Matcher multMatcher = mult.matcher(query);
+    if (multMatcher.matches()) {
+      int i1 = Integer.valueOf(multMatcher.group(1));
+      int i2 = Integer.valueOf(multMatcher.group(2));
+      return String.valueOf(i1*i2);
+    
+    }
 
     Matcher plusMatcher = plus.matcher(query);
     if (plusMatcher.matches()) {
