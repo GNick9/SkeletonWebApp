@@ -7,6 +7,8 @@ public class QueryProcessor {
 
   Pattern plus = Pattern.compile("What is (-?\\d+) plus (-?\\d+)\\?");
 
+  Pattern minus = Pattern.compile("What is (-?\\d+) minus (-?\\d+)\\?");
+
   Pattern max = Pattern.compile("Which of the following numbers is the largest: (-?\\d+), (-?\\d+), (-?\\d+)\\?");
 
   Pattern mult = Pattern.compile("What is (-?\\d+) multiplied by (-?\\d+)\\?");
@@ -72,6 +74,14 @@ public class QueryProcessor {
       int i2 = Integer.valueOf(plusMatcher.group(2));
       return String.valueOf(i1+i2);
     }
+
+     Matcher minusMatcher = minus.matcher(query);
+    if (minusMatcher.matches()) {
+      int i1 = Integer.valueOf(minusMatcher.group(1));
+      int i2 = Integer.valueOf(minusMatcher.group(2));
+      return String.valueOf(i1-i2);
+    }
+
 
     Matcher maxMatcher = max.matcher(query);
     if (maxMatcher.matches()) {
